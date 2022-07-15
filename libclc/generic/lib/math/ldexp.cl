@@ -35,12 +35,7 @@ _CLC_DEFINE_BINARY_BUILTIN(float, ldexp, __clc_ldexp, float, int)
 _CLC_DEFINE_BINARY_BUILTIN(double, ldexp, __clc_ldexp, double, int)
 #endif
 
-#ifdef cl_khr_fp16
-
-#pragma OPENCL EXTENSION cl_khr_fp16 : enable
-
-_CLC_DEFINE_BINARY_BUILTIN(half, ldexp, __clc_ldexp, half, int)
-#endif
+// TODO: add declaration for half when it's been implemented.
 
 // This defines all the ldexp(GENTYPE, int) variants
 #define __CLC_BODY <ldexp.inc>

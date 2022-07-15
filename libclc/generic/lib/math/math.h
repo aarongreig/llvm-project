@@ -113,5 +113,31 @@ _CLC_OVERLOAD _CLC_INLINE float __clc_flush_denormal_if_not_supported(float x)
 
 #endif // cl_khr_fp64
 
+#ifdef cl_khr_fp16
+
+#define SIGNBIT_DP16      0x8000
+#define EXSIGNBIT_DP16    0x7fff
+#define EXPBITS_DP16      0x7c00
+#define MANTBITS_DP16     0x03ff
+#define ONEEXPBITS_DP16   0x3c00
+#define TWOEXPBITS_DP16   0x4000
+#define HALFEXPBITS_DP16  0x3800
+#define IMPBIT_DP16       0x0400
+#define QNANBITPATT_DP16  0x7e80
+#define INDEFBITPATT_DP16 0xfe00
+#define PINFBITPATT_DP16  0x7c00
+#define NINFBITPATT_DP16  0xfc00
+#define EXPBIAS_DP16      15
+#define EXPSHIFTBITS_DP16 10
+#define BIASEDEMIN_DP16   1
+#define EMIN_DP16         -14
+#define BIASEDEMAX_DP16   120 /* 0x78 */
+#define EMAX_DP16         15 /* 0xf */
+#define LAMBDA_DP16       1.0e4
+#define MANTLENGTH_DP16   11
+#define BASEDIGITS_DP16   3
+
+#endif // cl_khr_fp16
+
 #define ALIGNED(x)	__attribute__((aligned(x)))
 #endif // __CLC_MATH_H_

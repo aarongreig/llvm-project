@@ -25,6 +25,7 @@
 // been updated as appropriate.
 
 #include <clc/clc.h>
+
 #include "../../../generic/lib/clcmacro.h"
 #include "../../../generic/lib/math/math.h"
 
@@ -34,7 +35,8 @@ struct fp {
   uint sign;
 };
 
-_CLC_DEF _CLC_OVERLOAD float fma(float a, float b, float c) {
+_CLC_DEF _CLC_OVERLOAD __attribute__((noinline)) float fma(float a, float b,
+                                                           float c) {
   /* special cases */
   if (isnan(a) || isnan(b) || isnan(c) || isinf(a) || isinf(b)) {
     return mad(a, b, c);
@@ -226,7 +228,7 @@ _CLC_DEF _CLC_OVERLOAD float fma(float a, float b, float c) {
     st_fma.mantissa.hi += 1u << shift;
   }
 
-        // Shift mantissa back to bit 23
+  // Shift mantissa back to bit 23
   st_fma.mantissa.lo = (st_fma.mantissa.hi >> (C_ADJUST + overflow_bits - 32));
   st_fma.mantissa.hi = 0;
 
